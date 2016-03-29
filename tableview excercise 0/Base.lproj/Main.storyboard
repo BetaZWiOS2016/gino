@@ -5,6 +5,7 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
     </dependencies>
     <scenes>
         <!--Root View Controller-->
@@ -97,6 +98,7 @@
                                     <outlet property="amountText" destination="0cG-kK-XMP" id="z4d-KH-2az"/>
                                     <outlet property="categoryText" destination="gdL-WU-av4" id="7mZ-ON-m9s"/>
                                     <outlet property="datumText" destination="W6W-aX-k4j" id="Bhb-Vk-SpK"/>
+                                    <segue destination="OXQ-Zi-Yd3" kind="show" identifier="showDetail" id="k2K-NH-6mb"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -122,7 +124,64 @@
                     <view key="view" contentMode="scaleToFill" id="fC1-EO-fum">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <pickerView contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="feI-j1-bXe">
+                                <rect key="frame" x="175" y="23" width="250" height="100"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="100" id="8sm-QQ-ESw"/>
+                                    <constraint firstAttribute="width" secondItem="feI-j1-bXe" secondAttribute="height" multiplier="5:2" id="nMw-hw-bP2"/>
+                                </constraints>
+                            </pickerView>
+                            <datePicker contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="Dn4-uq-WEF">
+                                <rect key="frame" x="140" y="131" width="320" height="216"/>
+                                <date key="date" timeIntervalSinceReferenceDate="480954452.716111">
+                                    <!--2016-03-29 14:27:32 +0000-->
+                                </date>
+                            </datePicker>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="p8y-yi-zUQ">
+                                <rect key="frame" x="15" y="357" width="570" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cashIcon" translatesAutoresizingMaskIntoConstraints="NO" id="rgK-yf-Rt5">
+                                <rect key="frame" x="40" y="525" width="101" height="65"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="65" id="8WS-UO-7yH"/>
+                                    <constraint firstAttribute="width" secondItem="rgK-yf-Rt5" secondAttribute="height" multiplier="101:65" id="zlE-M5-kHz"/>
+                                </constraints>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Txb-Vk-s1E">
+                                <rect key="frame" x="461" y="560" width="30" height="30"/>
+                                <state key="normal" title="OK"/>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ylp-E1-kEX">
+                                <rect key="frame" x="511" y="560" width="59" height="30"/>
+                                <state key="normal" title="CANCEL"/>
+                            </button>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="amount" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="cz4-mz-qfK">
+                                <rect key="frame" x="140" y="529" width="70" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="q36-fK-3RK" firstAttribute="top" secondItem="cz4-mz-qfK" secondAttribute="bottom" constant="10" id="0lR-2g-xwM"/>
+                            <constraint firstItem="p8y-yi-zUQ" firstAttribute="centerX" secondItem="fC1-EO-fum" secondAttribute="centerX" id="9Fa-aR-mvd"/>
+                            <constraint firstItem="feI-j1-bXe" firstAttribute="centerX" secondItem="fC1-EO-fum" secondAttribute="centerX" id="AgP-6Q-mr1"/>
+                            <constraint firstItem="Dn4-uq-WEF" firstAttribute="centerX" secondItem="fC1-EO-fum" secondAttribute="centerX" id="BBA-g1-NRk"/>
+                            <constraint firstItem="feI-j1-bXe" firstAttribute="top" secondItem="Iqd-Vr-6eX" secondAttribute="bottom" constant="3" id="Bvv-H9-klX"/>
+                            <constraint firstItem="Dn4-uq-WEF" firstAttribute="top" secondItem="feI-j1-bXe" secondAttribute="bottom" constant="8" id="Fm2-OW-J7o"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="Ylp-E1-kEX" secondAttribute="trailing" constant="10" id="IZv-oy-Ro9"/>
+                            <constraint firstItem="p8y-yi-zUQ" firstAttribute="top" secondItem="Dn4-uq-WEF" secondAttribute="bottom" constant="10" id="Op5-uK-It6"/>
+                            <constraint firstItem="q36-fK-3RK" firstAttribute="top" secondItem="Txb-Vk-s1E" secondAttribute="bottom" constant="10" id="PMb-4C-CdO"/>
+                            <constraint firstItem="rgK-yf-Rt5" firstAttribute="leading" secondItem="fC1-EO-fum" secondAttribute="leadingMargin" constant="20" id="R4v-z7-Ojs"/>
+                            <constraint firstItem="p8y-yi-zUQ" firstAttribute="width" secondItem="fC1-EO-fum" secondAttribute="width" multiplier="0.95" id="Yb4-n4-6KS"/>
+                            <constraint firstItem="cz4-mz-qfK" firstAttribute="leading" secondItem="rgK-yf-Rt5" secondAttribute="trailing" constant="39" id="dnq-jN-VIv"/>
+                            <constraint firstItem="Ylp-E1-kEX" firstAttribute="leading" secondItem="Txb-Vk-s1E" secondAttribute="trailing" constant="20" id="eNl-jR-lwy"/>
+                            <constraint firstItem="q36-fK-3RK" firstAttribute="top" secondItem="Ylp-E1-kEX" secondAttribute="bottom" constant="10" id="icD-VK-dS2"/>
+                            <constraint firstItem="q36-fK-3RK" firstAttribute="top" secondItem="rgK-yf-Rt5" secondAttribute="bottom" constant="10" id="kUz-Dk-est"/>
+                        </constraints>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xku-pJ-ITj" userLabel="First Responder" sceneMemberID="firstResponder"/>

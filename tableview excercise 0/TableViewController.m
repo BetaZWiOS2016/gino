@@ -78,6 +78,13 @@
     }   
 }
 
+- (void)tableView:(UITableView *)tableView didDeselectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    [tableView deselectRowAtIndexPath:indexPath animated: YES];
+    [self performSegueWithIdentifier:@"showDetail" sender:_data[indexPath.row]];
+    
+}
+
 
 /*
 // Override to support rearranging the table view.
