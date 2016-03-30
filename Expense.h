@@ -11,8 +11,9 @@
 
 @interface Expense : NSObject
 
-@property (assign) ExpenseCategory* category;
-@property (assign) NSDate* datum;
+@property (strong, nonatomic) ExpenseCategory* category;
+@property (strong, nonatomic) NSDate* datum;
+@property (strong, nonatomic) NSString* Expensedescription;
 @property (assign) float amount;
 
 

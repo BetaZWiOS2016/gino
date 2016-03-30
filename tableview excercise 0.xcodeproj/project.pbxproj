@@ -19,6 +19,8 @@
 		193406E61CAA716B008F09ED /* TableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 193406E51CAA716B008F09ED /* TableViewCell.m */; };
 		193406EF1CAA7746008F09ED /* ExpenseCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = 193406EE1CAA7746008F09ED /* ExpenseCategory.m */; };
 		193406F21CAA789C008F09ED /* Expense.m in Sources */ = {isa = PBXBuildFile; fileRef = 193406F11CAA789C008F09ED /* Expense.m */; };
+		19F142D11CABABD90098C9B7 /* SenderEntry.m in Sources */ = {isa = PBXBuildFile; fileRef = 19F142D01CABABD90098C9B7 /* SenderEntry.m */; };
+		19F142D61CABDC0C0098C9B7 /* DataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 19F142D51CABDC0C0098C9B7 /* DataManager.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -63,6 +65,10 @@
 		193406EE1CAA7746008F09ED /* ExpenseCategory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExpenseCategory.m; sourceTree = "<group>"; };
 		193406F01CAA789C008F09ED /* Expense.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Expense.h; sourceTree = "<group>"; };
 		193406F11CAA789C008F09ED /* Expense.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Expense.m; sourceTree = "<group>"; };
+		19F142CF1CABABD90098C9B7 /* SenderEntry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SenderEntry.h; sourceTree = "<group>"; };
+		19F142D01CABABD90098C9B7 /* SenderEntry.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SenderEntry.m; sourceTree = "<group>"; };
+		19F142D41CABDC0C0098C9B7 /* DataManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataManager.h; sourceTree = "<group>"; };
+		19F142D51CABDC0C0098C9B7 /* DataManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataManager.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -93,10 +99,7 @@
 		1934069C1CAA63C0008F09ED = {
 			isa = PBXGroup;
 			children = (
-				193406F01CAA789C008F09ED /* Expense.h */,
-				193406F11CAA789C008F09ED /* Expense.m */,
-				193406ED1CAA7746008F09ED /* ExpenseCategory.h */,
-				193406EE1CAA7746008F09ED /* ExpenseCategory.m */,
+				19F142D21CABB3A60098C9B7 /* model */,
 				193406A71CAA63C0008F09ED /* tableview excercise 0 */,
 				193406C11CAA63C0008F09ED /* tableview excercise 0Tests */,
 				193406CC1CAA63C0008F09ED /* tableview excercise 0UITests */,
@@ -117,19 +120,12 @@
 		193406A71CAA63C0008F09ED /* tableview excercise 0 */ = {
 			isa = PBXGroup;
 			children = (
-				193406AB1CAA63C0008F09ED /* AppDelegate.h */,
-				193406AC1CAA63C0008F09ED /* AppDelegate.m */,
-				193406AE1CAA63C0008F09ED /* ViewController.h */,
-				193406AF1CAA63C0008F09ED /* ViewController.m */,
+				19F142D31CABB3EC0098C9B7 /* controllers */,
 				193406B11CAA63C0008F09ED /* Main.storyboard */,
 				193406B41CAA63C0008F09ED /* Assets.xcassets */,
 				193406B61CAA63C0008F09ED /* LaunchScreen.storyboard */,
 				193406B91CAA63C0008F09ED /* Info.plist */,
 				193406A81CAA63C0008F09ED /* Supporting Files */,
-				193406DB1CAA6734008F09ED /* TableViewController.h */,
-				193406DC1CAA6734008F09ED /* TableViewController.m */,
-				193406E41CAA716B008F09ED /* TableViewCell.h */,
-				193406E51CAA716B008F09ED /* TableViewCell.m */,
 			);
 			path = "tableview excercise 0";
 			sourceTree = "<group>";
@@ -158,6 +154,36 @@
 				193406CF1CAA63C0008F09ED /* Info.plist */,
 			);
 			path = "tableview excercise 0UITests";
+			sourceTree = "<group>";
+		};
+		19F142D21CABB3A60098C9B7 /* model */ = {
+			isa = PBXGroup;
+			children = (
+				19F142CF1CABABD90098C9B7 /* SenderEntry.h */,
+				19F142D01CABABD90098C9B7 /* SenderEntry.m */,
+				193406F01CAA789C008F09ED /* Expense.h */,
+				193406F11CAA789C008F09ED /* Expense.m */,
+				193406ED1CAA7746008F09ED /* ExpenseCategory.h */,
+				193406EE1CAA7746008F09ED /* ExpenseCategory.m */,
+				19F142D41CABDC0C0098C9B7 /* DataManager.h */,
+				19F142D51CABDC0C0098C9B7 /* DataManager.m */,
+			);
+			name = model;
+			sourceTree = "<group>";
+		};
+		19F142D31CABB3EC0098C9B7 /* controllers */ = {
+			isa = PBXGroup;
+			children = (
+				193406AB1CAA63C0008F09ED /* AppDelegate.h */,
+				193406AC1CAA63C0008F09ED /* AppDelegate.m */,
+				193406AE1CAA63C0008F09ED /* ViewController.h */,
+				193406AF1CAA63C0008F09ED /* ViewController.m */,
+				193406DB1CAA6734008F09ED /* TableViewController.h */,
+				193406DC1CAA6734008F09ED /* TableViewController.m */,
+				193406E41CAA716B008F09ED /* TableViewCell.h */,
+				193406E51CAA716B008F09ED /* TableViewCell.m */,
+			);
+			name = controllers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -293,9 +319,11 @@
 				193406B01CAA63C0008F09ED /* ViewController.m in Sources */,
 				193406E61CAA716B008F09ED /* TableViewCell.m in Sources */,
 				193406EF1CAA7746008F09ED /* ExpenseCategory.m in Sources */,
+				19F142D11CABABD90098C9B7 /* SenderEntry.m in Sources */,
 				193406AD1CAA63C0008F09ED /* AppDelegate.m in Sources */,
 				193406F21CAA789C008F09ED /* Expense.m in Sources */,
 				193406AA1CAA63C0008F09ED /* main.m in Sources */,
+				19F142D61CABDC0C0098C9B7 /* DataManager.m in Sources */,
 				193406DD1CAA6734008F09ED /* TableViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -522,6 +550,7 @@
 				193406D41CAA63C0008F09ED /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		193406D51CAA63C0008F09ED /* Build configuration list for PBXNativeTarget "tableview excercise 0Tests" */ = {
 			isa = XCConfigurationList;
@@ -530,6 +559,7 @@
 				193406D71CAA63C0008F09ED /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		193406D81CAA63C0008F09ED /* Build configuration list for PBXNativeTarget "tableview excercise 0UITests" */ = {
 			isa = XCConfigurationList;
@@ -538,6 +568,7 @@
 				193406DA1CAA63C0008F09ED /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

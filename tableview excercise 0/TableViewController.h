@@ -7,10 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "Expense.h"
+#import "TableViewCell.h"
+#import "ViewController.h"
+#import "DataManager.h"
+#import "SenderEntry.h"
 
 @interface TableViewController : UITableViewController
 
+@property SenderEntry* sender;
 
 
 @end

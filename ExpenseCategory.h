@@ -11,6 +11,6 @@
 @interface ExpenseCategory : NSObject
 
 @property (assign)NSInteger id;
-@property (assign)NSString* categoryDescription;
+@property (strong, nonatomic)NSString* categoryDescription;
 
 @end

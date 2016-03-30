@@ -9,13 +9,17 @@
 #import <UIKit/UIKit.h>
 #import "Expense.h"
 
+
 @interface TableViewCell : UITableViewCell
 
 @property (weak, nonatomic) IBOutlet UILabel *categoryText;
 @property (weak, nonatomic) IBOutlet UILabel *datumText;
+@property (weak, nonatomic) IBOutlet UILabel *descriptionText;
+
 @property (weak, nonatomic) IBOutlet UILabel *amountText;
 
--(void) configureCell: (Expense*) expense ;
+-(void) configureCell: (Expense*) expense
+                  row: (NSInteger) row;
 
 @end
 

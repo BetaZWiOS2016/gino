@@ -7,12 +7,14 @@
 //
 
 #import "TableViewController.h"
-#import "TableViewCell.h"
+
 
 @interface TableViewController ()
 
-@property NSMutableArray* data;
-@property NSMutableArray* dataCategories;
+//@property NSMutableArray* data;
+//@property NSMutableArray* dataCategories;
+@property DataManager* datamanager;
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *Addbutton;
 
 @end
 
@@ -22,14 +24,20 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    
     // Uncomment the following line to preserve selection between presentations.
     self.clearsSelectionOnViewWillAppear = NO;
     
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
     
-    [self createData];
+    _datamanager = [DataManager sharedManager];
+    _sender = [[SenderEntry alloc] init];
+}
+
+- (void) viewWillAppear:(BOOL)animated
+{
+    [self.tableView reloadData];
+    
 }
 
 - (void)didReceiveMemoryWarning {
@@ -45,7 +53,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
 
-    return [_data count];
+    return [[_datamanager getExpenseList] count];
 }
 
 
@@ -53,7 +61,9 @@
     TableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"ExpenseCell" forIndexPath:indexPath];
     
     // Configure the cell..
-    [cell configureCell: _data[indexPath.row]];
+    [cell configureCell: [_datamanager getExpense:indexPath.row]
+                    row: indexPath.row];
+    
     
     return cell;
 }
@@ -69,19 +79,24 @@
 
 
 // Override to support editing the table view.
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
+- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
+{
     if (editingStyle == UITableViewCellEditingStyleDelete) {
         // Delete the row from the data source
+        [_datamanager deleteExpense:indexPath.row];
         [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    } else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }   
+       
+    }
 }
 
-- (void)tableView:(UITableView *)tableView didDeselectRowAtIndexPath:(NSIndexPath *)indexPath
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     [tableView deselectRowAtIndexPath:indexPath animated: YES];
-    [self performSegueWithIdentifier:@"showDetail" sender:_data[indexPath.row]];
+   
+    
+    _sender.entry = [_datamanager getExpense:indexPath.row];
+    _sender.categories = [_datamanager getExpenseCategoryList];
+    [self performSegueWithIdentifier:@"showDetail" sender:_sender];
     
 }
 
@@ -100,60 +115,36 @@
 }
 */
 
-/*
+
 #pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    if ( [[segue identifier] isEqualToString:@"showDetail"]) {
+        
+        SenderEntry* senderentry = (SenderEntry*)sender;
+        
+        //NSLog(@"%@", senderentry);
+        
+        ViewController* vc = (ViewController*)[segue destinationViewController];
+        vc.entry = senderentry.entry;
+        vc.categories = senderentry.categories;
+    }
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
 }
-*/
-
-- (ExpenseCategory*) createExpenseCategory:  (NSInteger) categoryID
-                        ExpenseDescription: (NSString*) description
-{
-    ExpenseCategory* element = [[ExpenseCategory alloc] init];
-    [element setId:categoryID];
-    [element setCategoryDescription:description];
-    return element;
-}
-
-
-- (Expense*) createExpense: (NSInteger) categoryID
-          Expensedatum: (NSString*) datumString
-          ExpenseAmount: (float) amount
-{
-    Expense* element = [[Expense alloc] init];
+- (IBAction)ClickADDbutton:(id)sender {
     
-    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-    dateFormatter.locale = [NSLocale currentLocale];
-    dateFormatter.dateFormat = @"dd/MM/yyyy";
-    NSDate *datum = [dateFormatter dateFromString:datumString];
+    Expense* entry = [_datamanager createExpense:1 Expensedatum:@"" Expensedescription:@""  ExpenseAmount:0];
     
-    [element setAmount:amount];
-    [element setDatum:datum];
-    [element setCategory:_dataCategories[categoryID]];
-    return element;
+    NSInteger row = [_datamanager addExpense:entry];
+    _sender.entry = entry;
+    _sender.categories = [_datamanager getExpenseCategoryList];
+    [self performSegueWithIdentifier:@"showDetail" sender:_sender];
+    
     
 }
 
-- (void) createData
-{
-    
-    _data =[[NSMutableArray alloc]init];
-    _dataCategories = [[NSMutableArray alloc]init];
-    
-    [_dataCategories addObject:
-     [self createExpenseCategory:1 ExpenseDescription:@"One"]];
-    [_dataCategories addObject:
-     [self createExpenseCategory:2 ExpenseDescription:@"Two"]];
-    [_dataCategories addObject:
-     [self createExpenseCategory:3 ExpenseDescription:@"Three"]];
-    
-    [_data addObject: [self createExpense:1 Expensedatum:@"01/01/2016" ExpenseAmount:10.2]];
-    [_data addObject: [self createExpense:1 Expensedatum:@"02/01/2016" ExpenseAmount:9.5]];
-}
 
 
 @end
