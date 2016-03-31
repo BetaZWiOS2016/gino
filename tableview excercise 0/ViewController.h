@@ -10,7 +10,8 @@
 #import "Expense.h"
 #import "TableViewController.h"
 
-@interface ViewController : UIViewController<UIPickerViewDataSource, UIPickerViewDelegate>
+@interface ViewController : UIViewController
+     <UIPickerViewDataSource, UIPickerViewDelegate>
 
 @property Expense* entry ;
 @property NSMutableArray* categories;

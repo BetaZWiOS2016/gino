@@ -8,6 +8,64 @@
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
     </dependencies>
     <scenes>
+        <!--Filter View Controller-->
+        <scene sceneID="j7c-pB-bFX">
+            <objects>
+                <viewController id="CxC-3a-GQp" customClass="FilterViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="N61-kc-iba"/>
+                        <viewControllerLayoutGuide type="bottom" id="PZF-tC-G3s"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="yTe-0y-GfJ">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Zwh-OP-wJm">
+                                <rect key="frame" x="246" y="261" width="109" height="30"/>
+                                <state key="normal" title="select Category">
+                                    <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="ClickSelectbutton:" destination="CxC-3a-GQp" eventType="touchDown" id="kWt-Ny-Bbm"/>
+                                </connections>
+                            </button>
+                            <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rQN-1a-Pg8">
+                                <rect key="frame" x="133" y="94" width="334" height="112"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="334" id="B3f-nc-gM4"/>
+                                    <constraint firstAttribute="width" secondItem="rQN-1a-Pg8" secondAttribute="height" multiplier="167:56" id="PeQ-0P-T6a"/>
+                                </constraints>
+                            </pickerView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="34B-mW-GQ6">
+                                <rect key="frame" x="260" y="349" width="80" height="30"/>
+                                <state key="normal" title="cancel filter">
+                                    <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="ClickCancelbutton:" destination="CxC-3a-GQp" eventType="touchDown" id="jyO-0V-OAm"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="Zwh-OP-wJm" firstAttribute="top" secondItem="rQN-1a-Pg8" secondAttribute="bottom" constant="55" id="2QP-d4-ugq"/>
+                            <constraint firstItem="rQN-1a-Pg8" firstAttribute="centerX" secondItem="yTe-0y-GfJ" secondAttribute="centerX" id="OOD-Xo-kZm"/>
+                            <constraint firstItem="34B-mW-GQ6" firstAttribute="centerX" secondItem="yTe-0y-GfJ" secondAttribute="centerX" id="VSx-xF-xMq"/>
+                            <constraint firstItem="rQN-1a-Pg8" firstAttribute="top" secondItem="N61-kc-iba" secondAttribute="bottom" constant="30" id="q60-hj-grN"/>
+                            <constraint firstItem="34B-mW-GQ6" firstAttribute="top" secondItem="Zwh-OP-wJm" secondAttribute="bottom" constant="58" id="v05-Ma-IZ4"/>
+                            <constraint firstItem="Zwh-OP-wJm" firstAttribute="centerX" secondItem="yTe-0y-GfJ" secondAttribute="centerX" id="zSJ-cE-RMi"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="cancelbutton" destination="34B-mW-GQ6" id="SV6-6b-fro"/>
+                        <outlet property="categoryPicker" destination="rQN-1a-Pg8" id="zh8-CG-KwV"/>
+                        <outlet property="selectbutton" destination="Zwh-OP-wJm" id="MjS-NY-UfC"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dPm-9I-U1j" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="178" y="53"/>
+        </scene>
         <!--Expense Collector-->
         <scene sceneID="Whb-kc-5il">
             <objects>
@@ -30,14 +88,14 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="categoryIcon" translatesAutoresizingMaskIntoConstraints="NO" id="3WV-23-Yjp">
-                                            <rect key="frame" x="-12" y="8" width="115" height="72"/>
+                                            <rect key="frame" x="-12" y="3" width="115" height="72"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" secondItem="3WV-23-Yjp" secondAttribute="height" multiplier="115:72" id="pDv-hx-hUl"/>
                                                 <constraint firstAttribute="width" constant="115" id="rof-zn-MtJ"/>
                                             </constraints>
                                         </imageView>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Category" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gdL-WU-av4">
-                                            <rect key="frame" x="18" y="70" width="71" height="76"/>
+                                            <rect key="frame" x="18" y="65" width="71" height="81"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
@@ -92,7 +150,7 @@
                                         <constraint firstItem="gdL-WU-av4" firstAttribute="leading" secondItem="ZhW-GK-eSF" secondAttribute="leadingMargin" constant="10" id="rCD-SM-cgi"/>
                                         <constraint firstItem="3WV-23-Yjp" firstAttribute="leading" secondItem="ZhW-GK-eSF" secondAttribute="leadingMargin" constant="-20" id="rDT-lH-nwj"/>
                                         <constraint firstAttribute="bottomMargin" secondItem="gdL-WU-av4" secondAttribute="bottom" constant="-8" id="sAA-hc-sOM"/>
-                                        <constraint firstItem="3WV-23-Yjp" firstAttribute="top" secondItem="ZhW-GK-eSF" secondAttribute="topMargin" id="wck-10-Lk2"/>
+                                        <constraint firstItem="3WV-23-Yjp" firstAttribute="top" secondItem="ZhW-GK-eSF" secondAttribute="topMargin" constant="-5" id="wck-10-Lk2"/>
                                         <constraint firstItem="8gP-vo-28I" firstAttribute="top" secondItem="ZhW-GK-eSF" secondAttribute="topMargin" constant="3" id="wss-zO-TbA"/>
                                     </constraints>
                                 </tableViewCellContentView>
@@ -110,6 +168,12 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Expense Collector" id="gl9-Fa-mgF">
+                        <barButtonItem key="leftBarButtonItem" title="Filter" id="NGd-KY-81C">
+                            <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                            <connections>
+                                <action selector="ClickFILTERbutton:" destination="fLR-gg-b7t" id="7bB-PP-dSE"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="ADD" id="h3G-rS-IT3">
                             <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
@@ -119,7 +183,9 @@
                     </navigationItem>
                     <connections>
                         <outlet property="Addbutton" destination="h3G-rS-IT3" id="EaH-RR-cm2"/>
+                        <outlet property="Filterbutton" destination="NGd-KY-81C" id="X2D-hR-bO4"/>
                         <segue destination="OXQ-Zi-Yd3" kind="show" identifier="showDetail" id="uPd-CR-zBG"/>
+                        <segue destination="CxC-3a-GQp" kind="show" identifier="showFilter" id="XAp-y2-7nH"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Cpm-U6-MBD" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -158,6 +224,7 @@
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="decription" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="p8y-yi-zUQ">
                                 <rect key="frame" x="15" y="313" width="570" height="30"/>
                                 <color key="backgroundColor" red="0.76078431372549016" green="0.76078431372549016" blue="0.76078431372549016" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
@@ -191,6 +258,7 @@
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="amount" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="cz4-mz-qfK">
                                 <rect key="frame" x="59" y="353" width="70" height="30"/>
                                 <color key="backgroundColor" red="0.76078431372549016" green="0.76078431372549016" blue="0.76078431372549016" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <string key="text" base64-UTF8="YES">
 CA
 </string>

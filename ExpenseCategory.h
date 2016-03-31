@@ -7,10 +7,16 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <Realm/Realm.h>
 
-@interface ExpenseCategory : NSObject
+//@interface ExpenseCategory : NSObject
+@interface ExpenseCategory : RLMObject
 
-@property (assign)NSInteger id;
+@property (assign)NSString* id;
 @property (strong, nonatomic)NSString* categoryDescription;
 
+-(NSArray *) relatedExpenses;
+
 @end
+
+RLM_ARRAY_TYPE(ExpenseCategory);

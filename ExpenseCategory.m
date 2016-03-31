@@ -9,11 +9,15 @@
 #import "ExpenseCategory.h"
 
 @interface ExpenseCategory()
-//@property (strong, nonatomic, readwrite ) NSString* categoryDescription;
+
 @end
 
 @implementation ExpenseCategory
 
 @synthesize description;
+
+-(NSArray *)relatedExpenses{
+    return [self linkingObjectsOfClass:@"Expense" forProperty:@"ExpenseCategory"];
+}
 
 @end

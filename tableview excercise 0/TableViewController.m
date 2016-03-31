@@ -15,6 +15,7 @@
 //@property NSMutableArray* dataCategories;
 @property DataManager* datamanager;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *Addbutton;
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *Filterbutton;
 
 @end
 
@@ -61,8 +62,8 @@
     TableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"ExpenseCell" forIndexPath:indexPath];
     
     // Configure the cell..
-    [cell configureCell: [_datamanager getExpense:indexPath.row]
-                    row: indexPath.row];
+    Expense* entry = [_datamanager getExpense:indexPath.row];
+    [cell configureCell: entry  row: indexPath.row];
     
     
     return cell;
@@ -129,15 +130,22 @@
         ViewController* vc = (ViewController*)[segue destinationViewController];
         vc.entry = senderentry.entry;
         vc.categories = senderentry.categories;
+    } else if ([[segue identifier] isEqualToString:@"showFilter"]) {
+        SenderEntry* senderentry = (SenderEntry*)sender;
+        ViewController* vc = (ViewController*)[segue destinationViewController];
+        vc.categories = senderentry.categories;
     }
-    // Get the new view controller using [segue destinationViewController].
+        
+        // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
 }
 - (IBAction)ClickADDbutton:(id)sender {
     
-    Expense* entry = [_datamanager createExpense:1 Expensedatum:@"" Expensedescription:@""  ExpenseAmount:0];
     
-    NSInteger row = [_datamanager addExpense:entry];
+    Expense* entry = [_datamanager createExpense:[_sender.categories[0] id ] Expensedatum:@"" Expensedescription:@""  ExpenseAmount:0];
+    
+    
+   // NSInteger row = [_datamanager addExpense:entry];
     _sender.entry = entry;
     _sender.categories = [_datamanager getExpenseCategoryList];
     [self performSegueWithIdentifier:@"showDetail" sender:_sender];
@@ -145,6 +153,10 @@
     
 }
 
+- (IBAction)ClickFILTERbutton:(id)sender {
+    _sender.categories =[_datamanager getExpenseCategoryList];
+    [self performSegueWithIdentifier:@"showFilter" sender:_sender];
+}
 
 
 @end

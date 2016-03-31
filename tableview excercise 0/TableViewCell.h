@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "Expense.h"
+#import "TableViewController.h"
 
 
 @interface TableViewCell : UITableViewCell

@@ -16,20 +16,24 @@
 @property (nonatomic, retain) NSMutableArray* data;
 @property (nonatomic, retain) NSMutableArray* categories;
 
+
 +(id)sharedManager;
--(ExpenseCategory*) createExpenseCategory:  (NSInteger) categoryID
-                      CategoryDescription: (NSString*) description;
-- (ExpenseCategory*) getExpenseCategory: (NSInteger) categoryID;
+- (ExpenseCategory*) createExpenseCategory: (NSString*) description;
+- (ExpenseCategory*) getExpenseCategory: (NSString*) categoryID;
+- (NSInteger) getExpenseCategoryRow: (NSString*) categoryID;
 - (NSMutableArray*) getExpenseCategoryList;
-- (Expense*) createExpense: (NSInteger) categoryID
+- (Expense*) createExpense: (NSString*) categoryID
              Expensedatum: (NSString*) datumString
         Expensedescription: (NSString*) Edescription
              ExpenseAmount: (float) amount;
-- (Expense*) getExpense: (NSInteger) row;
-- (void) setExpense : (NSInteger) row
-            newValue: (Expense*) entry;
+- (Expense*) getExpense:(NSInteger) row;
+- (Expense*) getExpenseFromID: (NSString*) id;
+- (NSInteger)getExpenseRow: (NSString*) expenseID;
+- (void)    setExpense : (Expense*) entry;
 - (NSInteger ) addExpense: (Expense*) entry;
+- (void) deleteExpenseFromID: (NSString*) id;
 - (void) deleteExpense: (NSInteger) row;
+- (void) setExpenseFilter: (NSString*) filter;
 - (NSMutableArray*) getExpenseList;
 
 @end

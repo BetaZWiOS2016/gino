@@ -8,6 +8,9 @@
 
 #import "TableViewCell.h"
 
+@interface TableViewCell()
+@property DataManager* datamanager;
+@end
 
 @implementation TableViewCell
 
@@ -33,16 +36,20 @@
     if (row % 2 == 0) {
         self.backgroundColor = [UIColor colorWithRed:0.90 green:0.77 blue:0.77 alpha:1.0];
     } else {
-        self.backgroundColor = [UIColor colorWithRed:0.81 green:0.58 blue:0.58 alpha:1.0];    }
-    self.categoryText.text = [[expense category] categoryDescription ];
+        self.backgroundColor = [UIColor colorWithRed:0.81 green:0.58 blue:0.58 alpha:1.0];
+    }
+    
+    _datamanager = [DataManager sharedManager];
+    ExpenseCategory* cat = [_datamanager getExpenseCategory:expense.categoryID];
+    self.categoryText.text = cat.categoryDescription;
     
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
     dateFormatter.locale = [NSLocale currentLocale];
-    dateFormatter.dateFormat = @"dd/MM/yyyy hh:mm";
+    dateFormatter.dateFormat = @"dd/MM/yyyy HH:mm";
     self.datumText.text = [dateFormatter stringFromDate:expense.datum];
     self.descriptionText.text = expense.Expensedescription;
 
-    self.amountText.text = [NSString stringWithFormat:@"%.1f", expense.amount];
+    self.amountText.text = [NSString stringWithFormat:@"%.1f €", expense.amount];
     
 }
 

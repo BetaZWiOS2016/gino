@@ -16,6 +16,10 @@
 
 @property (weak, nonatomic) IBOutlet UIButton *OKbutton;
 @property (weak, nonatomic) IBOutlet UIButton *CANCELbutton;
+
+@property RLMRealm* realm;
+@property DataManager* datamanager;
+
 @end
 
 @implementation ViewController
@@ -24,9 +28,12 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
     
+    _realm = [RLMRealm defaultRealm];
     _categoryPicker.dataSource = self;
     _categoryPicker.delegate = self;
-    [_categoryPicker selectRow:[[_entry category] id] inComponent:0 animated:YES ];
+    _datamanager = [DataManager sharedManager];
+    NSInteger index = [_datamanager getExpenseCategoryRow: _entry.categoryID];
+    [_categoryPicker selectRow:index inComponent:0 animated:YES ];
     
     _datumPicker.date = _entry.datum;
     _descriptionText.text = _entry.Expensedescription;
@@ -50,7 +57,9 @@
 }
 
 - (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component {
-    _entry.category = _categories[row];
+    [_realm beginWriteTransaction];
+    _entry.categoryID = [_categories[row] id];
+    [_realm commitWriteTransaction];
 }
 
 
@@ -61,9 +70,11 @@
 }
 - (IBAction)ClickOKbutton:(id)sender {
     
+    [_realm beginWriteTransaction];
     _entry.datum = _datumPicker.date;
     _entry.Expensedescription = _descriptionText.text;
     _entry.amount = [_amountText.text floatValue];
+    [_realm commitWriteTransaction];
 
     [self.navigationController popViewControllerAnimated:YES];
     
