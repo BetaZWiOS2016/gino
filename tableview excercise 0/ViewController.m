@@ -17,6 +17,8 @@
 @property (weak, nonatomic) IBOutlet UIButton *OKbutton;
 @property (weak, nonatomic) IBOutlet UIButton *CANCELbutton;
 
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *ADDbutton;
+
 @property RLMRealm* realm;
 @property DataManager* datamanager;
 
@@ -41,6 +43,15 @@
     
 }
 
+- (void) viewWillAppear:(BOOL)animated
+{
+    _categories = [_datamanager getExpenseCategoryList];
+    [[self categoryPicker] reloadAllComponents];
+    self.navigationItem.rightBarButtonItem.enabled = NO;
+    self.navigationItem.rightBarButtonItem.title = @"";
+    //self.navigationItem.rightBarButtonItem.image;
+}
+
 - (NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component {
     return [_categories count];
 }
@@ -57,10 +68,14 @@
 }
 
 - (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component {
+    
+    self.navigationItem.rightBarButtonItem.enabled = YES;
+    self.navigationItem.rightBarButtonItem.title = @"ADD";
     [_realm beginWriteTransaction];
     _entry.categoryID = [_categories[row] id];
     [_realm commitWriteTransaction];
 }
+
 
 
 
@@ -84,5 +99,19 @@
 }
 
 
+- (IBAction)ClickADDbutton:(id)sender {
+    
+}
+
+
+/*
+ #pragma mark - Navigation
+ 
+ // In a storyboard-based application, you will often want to do a little preparation before navigation
+ - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+ // Get the new view controller using [segue destinationViewController].
+ // Pass the selected object to the new view controller.
+ }
+ */
 
 @end

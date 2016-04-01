@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		002E24A5EC8F462863DFB657 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6DD4B0C369E107423F11B88C /* libPods.a */; };
+		19290B141CAE67A70064E12E /* ADDCategoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 19290B131CAE67A70064E12E /* ADDCategoryViewController.m */; };
 		193406AA1CAA63C0008F09ED /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 193406A91CAA63C0008F09ED /* main.m */; };
 		193406AD1CAA63C0008F09ED /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 193406AC1CAA63C0008F09ED /* AppDelegate.m */; };
 		193406B01CAA63C0008F09ED /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 193406AF1CAA63C0008F09ED /* ViewController.m */; };
@@ -43,6 +44,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		19290B121CAE67A70064E12E /* ADDCategoryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ADDCategoryViewController.h; sourceTree = "<group>"; };
+		19290B131CAE67A70064E12E /* ADDCategoryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ADDCategoryViewController.m; sourceTree = "<group>"; };
 		193406A51CAA63C0008F09ED /* tableview excercise 0.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "tableview excercise 0.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		193406A91CAA63C0008F09ED /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		193406AB1CAA63C0008F09ED /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -194,6 +197,8 @@
 				193406E51CAA716B008F09ED /* TableViewCell.m */,
 				194395171CAD57C4005FCA2F /* FilterViewController.h */,
 				194395181CAD57C4005FCA2F /* FilterViewController.m */,
+				19290B121CAE67A70064E12E /* ADDCategoryViewController.h */,
+				19290B131CAE67A70064E12E /* ADDCategoryViewController.m */,
 			);
 			name = controllers;
 			sourceTree = "<group>";
@@ -405,6 +410,7 @@
 				193406F21CAA789C008F09ED /* Expense.m in Sources */,
 				193406AA1CAA63C0008F09ED /* main.m in Sources */,
 				19F142D61CABDC0C0098C9B7 /* DataManager.m in Sources */,
+				19290B141CAE67A70064E12E /* ADDCategoryViewController.m in Sources */,
 				193406DD1CAA6734008F09ED /* TableViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
